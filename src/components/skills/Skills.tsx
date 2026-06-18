@@ -3,7 +3,11 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { skills } from '@/data';
+import VideoBlock from '@/components/video-block/VideoBlock';
 import styles from './Skills.module.css';
+
+const SKILLS_VIDEO =
+  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260419_064822_f120e48a-d545-45dd-a02d-facb07829888.mp4';
 
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -26,12 +30,7 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
   };
 
   return (
-    <div
-      ref={cardRef}
-      className={className}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-    >
+    <div ref={cardRef} className={className} onMouseMove={onMove} onMouseLeave={onLeave}>
       {children}
     </div>
   );
@@ -50,13 +49,17 @@ export default function Skills() {
           </div>
           <span className={styles.count} data-reveal>06 Disciplines</span>
         </div>
+      </div>
 
+      {/* Cinematic video break — full width between header and cards */}
+      <div className={styles.videoRow} data-reveal data-delay="2">
+        <VideoBlock src={SKILLS_VIDEO} height="48vh" />
+      </div>
+
+      <div className="container">
         <div className={styles.grid}>
           {skills.map((s, i) => (
-            <TiltCard
-              key={s.num}
-              className={styles.card}
-            >
+            <TiltCard key={s.num} className={styles.card}>
               <div data-reveal data-delay={String((i % 3) + 1)}>
                 <div className={styles.num}>{s.num}</div>
                 <h3 className={styles.cardTitle}>{s.title}</h3>

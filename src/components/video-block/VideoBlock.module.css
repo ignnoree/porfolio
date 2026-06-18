@@ -1,0 +1,54 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  height: var(--h, 52vh);
+  overflow: hidden;
+  border-radius: 3px;
+  /* subtle border so it breathes against the dark background */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.video {
+  position: absolute;
+  inset: -6%; /* extra room for parallax shift */
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* fade into the section background above */
+.overlayTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, var(--bg-soft), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* fade into the section background below */
+.overlayBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, var(--bg-soft), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* for sections with black bg instead of bg-soft */
+.bgBlack .overlayTop,
+.bgBlack .overlayBottom {
+  background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+@media (max-width: 768px) {
+  .wrap { height: 38vh; }
+}

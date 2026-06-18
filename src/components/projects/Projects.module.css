@@ -3,7 +3,13 @@
 }
 
 .head {
-  margin-bottom: 72px;
+  margin-bottom: 52px;
+}
+
+.videoRow {
+  margin: 0 0 72px;
+  /* Override VideoBlock overlay colour to match black bg */
+  --bg-soft: var(--bg);
 }
 
 /* Project list */

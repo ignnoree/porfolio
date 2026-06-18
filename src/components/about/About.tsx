@@ -3,7 +3,11 @@
 import { useEffect, useRef } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { stats } from '@/data';
+import VideoBlock from '@/components/video-block/VideoBlock';
 import styles from './About.module.css';
+
+const ABOUT_VIDEO =
+  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4';
 
 function animateCounter(el: HTMLElement, target: number, suffix: string) {
   const duration = 1400;
@@ -47,7 +51,14 @@ export default function About() {
     <section className={styles.section} id="about" ref={sectionRef}>
       <div className="container">
         <p className="sec-label" data-reveal>01 — ABOUT</p>
+      </div>
 
+      {/* Cinematic video break — full width, bleeds to edges */}
+      <div className={styles.videoRow} data-reveal data-delay="1">
+        <VideoBlock src={ABOUT_VIDEO} height="55vh" />
+      </div>
+
+      <div className="container">
         <div className={styles.grid}>
           {/* Left: narrative */}
           <div className={styles.left}>
